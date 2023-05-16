@@ -8,9 +8,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class Program {
     public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
         List<Product> list  = new ArrayList<>();
 
         String path = "..\\input.txt";
@@ -20,8 +22,11 @@ public class Program {
             while(line != null){
                 String [] field = line.split(",");
                 list.add(new Product(field[0], Double.parseDouble(field[1])));
+                System.out.println(new Product(field[0], Double.parseDouble(field[1])));
+                line = bf.readLine();
             }
             Product x = CalculationService.max(list);
+            System.out.println();
             System.out.println("Max: ");
             System.out.println(x);
         }
